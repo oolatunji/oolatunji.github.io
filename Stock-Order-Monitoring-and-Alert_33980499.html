@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>iCard Polaris : Stock Order Monitoring and Alert</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">iCard Polaris</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="iCard-Polaris-Home_34013447.html">iCard Polaris Home</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            iCard Polaris : Stock Order Monitoring and Alert
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Oluwatoni Olatunji</span>, last modified on Mar 14, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Please find below what to implement for this feature. I have created a new branch for this. </p><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><ul><li><p>Get the branch into your pc: <strong>git fetch &amp;&amp; git checkout feature/stock_order. </strong></p></li><li><p>Branch off to do your implementation. </p></li><li><p>Once done do a pull request back to feature/stock_order. </p></li><li><p>Change Status to <span class="status-macro aui-lozenge aui-lozenge-current">INPROGRESS</span> once started and <span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span> when your work is approved and merged to featured/stock_order</p></li></ul></div></div><div class="table-wrap"><table data-layout="full-width" class="confluenceTable"><colgroup><col style="width: 93.0px;"/><col style="width: 286.0px;"/><col style="width: 370.0px;"/><col style="width: 880.0px;"/><col style="width: 155.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Task ID</strong></p></th><th class="confluenceTh"><p><strong>Component</strong></p></th><th class="confluenceTh"><p><strong>Description</strong></p></th><th class="confluenceTh"><p><strong>Details</strong></p></th><th class="confluenceTh"><p><strong>Status</strong></p></th></tr><tr><td class="confluenceTd"><p>#1</p></td><td class="confluenceTd"><p>Database</p></td><td class="confluenceTd"><p>New Table: “<strong>StockLevel</strong>“</p></td><td class="confluenceTd"><p>Create the following columns</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: sql; gutter: false; theme: Confluence" data-theme="Confluence">Id bigint --Primary Key and Enable Auto Increment
+BranchId bigint not null --Foreign Key to Branch
+CardProfileId bigint not null --Foreign Key to Card Profile
+CardStock int not null
+CardsIssued int not null
+StockIsLow bit not null
+DateLastGenerated datetime not null</pre>
+</div></div><p /><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Create a new folder called <strong>SQL Scripts </strong>at the root folder of the icard_services_folder</p><ul><li><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/33980499/33914966.png" data-image-src="attachments/33980499/33914966.png" data-height="93" data-width="613" data-unresolved-comment-count="0" data-linked-resource-id="33914966" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20210208-170353.png" data-base-url="https://pajuno.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="33980499" data-linked-resource-container-version="13" data-media-id="1ad66d7c-e13c-4080-bb05-91c45302235b" data-media-type="file"></span><p>Add the script for creating the table in the folder. You can call the file <strong>create_stock_order_table.sql</strong></p></li><li><p>Do a PR after</p></li></ul></div></div><p /></td><td class="confluenceTd"><h1 id="StockOrderMonitoringandAlert-COMPLETEDGreen"><span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span> </h1></td></tr><tr><td rowspan="4" class="confluenceTd"><p>#2</p></td><td rowspan="4" class="confluenceTd"><p>StockLevel (Data, DataContracts, Business and BusinessContracts)</p></td><td class="confluenceTd"><p>SQL Modification</p></td><td class="confluenceTd"><div class="confluence-information-macro confluence-information-macro-note"><span class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Make the following modification to the Sql Table</p><p><code>DateLastGenerated datetime null</code></p><p><code>GenerationStatus nvarchar(10) not null</code></p></div></div></td><td rowspan="4" class="confluenceTd"><p><span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span>  </p></td></tr><tr><td class="confluenceTd"><p>Add Stock Level Entity to Project</p></td><td class="confluenceTd"><ul><li><p>Navigate to PersoManagerLibrary/ModelLibrary/EntityFrameworkLib</p></li><li><p>Double click PersoModel.edmx</p></li><li><p>Right click on the opened template and click <strong>“Update Model from Database” </strong></p></li></ul><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Ensure that the connectionString in the App.Config of the PersoManagerLibrary project is pointing to your database. Do this be commenting the existing connectionstring and add yours).</p></div></div><ul><li><p>On the prompt that follows Select only StockLevel table and click on the finish button<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/33980499/39485487.png" data-image-src="attachments/33980499/39485487.png" data-height="537" data-width="599" data-unresolved-comment-count="0" data-linked-resource-id="39485487" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20210212-214041.png" data-base-url="https://pajuno.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="33980499" data-linked-resource-container-version="13" data-media-id="bf9bcb8d-8284-4f2c-8fbf-ccaf31973c74" data-media-type="file"></span></li></ul></td></tr><tr><td class="confluenceTd"><p> New Enum “StockLevelGenerationStatus“</p></td><td class="confluenceTd"><ul><li><p>Open Enums under PersoManagerLibrary/Common</p></li><li><p>Add the following</p></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: Confluence" data-theme="Confluence">public enum StockLevelGenerationStatus
+{
+  Pending,
+  Generated
+}</pre>
+</div></div></td></tr><tr><td class="confluenceTd"><p>New Classes, Interfaces and their Registration</p></td><td class="confluenceTd"><p>Create the following:</p><ul><li><p>Interface IStockLevelDataRepository (under PersoManageLibrary/DataContracts)</p></li><li><p>Class StockLevelDataRepository (under PersoManageLibrary/Data)</p></li><li><p>Interface IStockLevelBusinessRepository (under PersoManageLibrary/BusinessContracts)</p></li><li><p>Class StockLevelBusinessRepository (under PersoManageLibrary/Business)</p></li><li><p>Open all the new classes and interfaces and make them public</p></li><li><p>Set up the classes to implement their corresponding interface</p></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: Confluence" data-theme="Confluence">public class StockLevelDataRepository : IStockLevelDataRepository {}</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">public class StockLevelBusinessRepository : IStockLevelBusinessRepository {}</pre>
+</div></div><ul><li><p>Register their dependencies of DI in PersoManagerLibrary/Bootstrappers/AutoFacTypeRegistrar.cs</p></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: Confluence" data-theme="Confluence"> //Dependency Injection for User Module
+  builder.RegisterType&lt;StockLevelDataRepository &gt;().As&lt;IStockLevelDataRepository&gt;();
+  builder.RegisterType&lt;StockLevelBusinessRepository &gt;().As&lt;IStockLevelBusinessRepository&gt;();</pre>
+</div></div></td></tr><tr><td class="confluenceTd"><p>#3</p></td><td class="confluenceTd"><ul><li><p>ICardBatchDataRepository</p></li><li><p>ICardBatchBusinessRepository</p></li><li><p>IVisaCardBatchDataRepository</p></li><li><p>IVisaCardBatchBusinessRepository</p></li></ul></td><td class="confluenceTd"><p>New methods to calculate sum of authorised cards</p></td><td class="confluenceTd"><p>Implement the following:</p><p>ICardBatchDataRepository and IVisaCardBatchDataRepository</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">int GetTotalQuantityAuthorised(int cardProfileId, int requestingBranchId)</pre>
+</div></div><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Implement the above method in their corresponding classes.</p><p>Return a sum of QuantityAutorised with a filter of cardprofileid and requestingbranchid</p></div></div><p /><ul><li><p>ICardBatchBusinessRepositoryand IVisaCardBatchBusinessRepository</p></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">int GetTotalQuantityAuthorised(int cardProfileId, int requestingBranchId)</pre>
+</div></div><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Implement the above method in their corresponding classes.</p><p>The implementation just makes a call to the data layer passing the parameters and returning the output obtained. Just one line implementation</p><p>e.g. return cardBatchDataRepository.<code>GetTotalQuantityAuthorised</code>(<code>cardProfileId</code>, <code>requestingBranchId</code>);</p></div></div></td><td class="confluenceTd"><p><span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span>  </p></td></tr><tr><td class="confluenceTd"><p>#4</p></td><td class="confluenceTd"><ul><li><p>PrepareCardStockJob</p></li></ul></td><td class="confluenceTd"><p>New Job in ReportService.WorkflowEngine</p><p><strong>InitializeCardStockJob</strong></p></td><td class="confluenceTd"><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Create a new Job “<strong>InitializeCardStockJob</strong>“ that runs every hour and use the new classes <code>StockLevelDataRepository </code> and <code>StockLevelBusinessRepository </code> created in Task #2 to implement the flow below</p></div></div><p /><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/33980499/51183628.png" data-image-src="attachments/33980499/51183628.png" data-height="702" data-width="792" data-unresolved-comment-count="0" data-linked-resource-id="51183628" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StockLevelImplementation.png" data-base-url="https://pajuno.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="33980499" data-linked-resource-container-version="13" data-media-id="addcf4e5-d7db-401f-aa32-37e5190e7cd8" data-media-type="file"></span><p /></td><td data-highlight-colour="#ffffff" class="confluenceTd"><p><span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span>  </p></td></tr><tr><td class="confluenceTd"><p>#5</p></td><td class="confluenceTd"><p>Process Card Stock Job</p></td><td class="confluenceTd"><p>New Job in ReportService.WorkflowEngine</p><p><strong>ProcessCardStockJob</strong></p></td><td class="confluenceTd"><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>A new job that runs every 5 minutes between 12 midnight and 5 am MON-FRI</p></div></div><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/33980499/69632017.png" data-image-src="attachments/33980499/69632017.png" data-height="662" data-width="812" data-unresolved-comment-count="0" data-linked-resource-id="69632017" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="UpdateStockLevel.png" data-base-url="https://pajuno.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="33980499" data-linked-resource-container-version="13" data-media-id="851fcfca-e38b-4285-94d4-e2b2fdda1739" data-media-type="file"></span><p /></td><td data-highlight-colour="#ffffff" class="confluenceTd"><p><span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span> </p></td></tr><tr><td class="confluenceTd"><p>#6</p></td><td class="confluenceTd"><p>New Web Page to Show Low Stock</p></td><td class="confluenceTd"><p>New Web Page: <strong>Stock Level</strong></p><p>Create under <code>Blank Card Management</code> module in the web project</p></td><td class="confluenceTd"><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>A new web page that displays branches that are low on stock. Implement the following:</p></div></div><ul class="inline-task-list" data-inline-tasks-content-id="33980499"><li data-inline-task-id="1"><span class="placeholder-inline-tasks"><strong><u>SQL Script</u></strong> (AddViewBranchOnLowStock.sql)</span></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: sql; gutter: false; theme: Confluence" data-theme="Confluence">INSERT INTO Functions
+VALUES (&#39;VIEW STOCK LEVEL&#39;, &#39;/visa-card/view-stock-level&#39;, &#39;Active&#39;)</pre>
+</div></div><p /><ul class="inline-task-list" data-inline-tasks-content-id="33980499"><li data-inline-task-id="2"><span class="placeholder-inline-tasks"><strong><u>Services</u></strong>:</span></li></ul><p><strong>IStockLevelDataRepository</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: Confluence" data-theme="Confluence">List&lt;StockLevel&gt; RetrieveLowStock(long cardProfileId); </pre>
+</div></div><p>In the above implementation, include CardProfile and Branch in your context query. See the method <em>RetrieveStockLevelByStatus </em>for what I mean.</p><p /><p><strong>IStockLevelBusinessRepository</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">List&lt;StockLevelDto&gt; RetrieveLowStock(long cardProfileId);</pre>
+</div></div><p /><p><strong>StockLevelDto</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">public class StockLevelDto
+{
+    public int CardStock { get; set; }
+    public int CardsIssued { get; set; }
+    public string DateLastGenerated { get; set; }
+    public string BranchName { get; set; }
+    public string BranchCode { get; set; }
+}</pre>
+</div></div><p /><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Mapping in StockLevelBusinessRepository</p><ul><li><p>DateLastGenerated from database to be converted to string using the <strong>.ToDateString() </strong>extension in DateExt.</p></li><li><p>BranchName and BranchCode from <a href="http://stockLevel.Branch.Name" class="external-link" rel="nofollow">stockLevel.Branch.Name</a> and <a href="http://stockLevel.Branch.Name" class="external-link" rel="nofollow">stockLevel.Branch.</a>Code respectively</p></li></ul></div></div><p /><p>New Web API Controller in <a href="http://PersoManager.Web" class="external-link" rel="nofollow">PersoManager.Web</a>: <strong>StockLevelAPIController</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">[RoutePrefix(&quot;api/StockLevelAPI&quot;)]
+[AuthorizeRequest]
+public class StockLevelAPIController: ApiController</pre>
+</div></div><p /><p>Method to get low stock data</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">[HttpGet, Route(&quot;RetrieveLowStock/{cardProfileId}&quot;)]
+[AuthorizeAccess(&quot;view-stock-level&quot;)]
+[SwaggerResponse(HttpStatusCode.OK, Type = typeof(StockLevelDto))]
+public HttpResponseMessage RetrieveLowStock(long cardProfileId)
+{
+}</pre>
+</div></div><p /><ul class="inline-task-list" data-inline-tasks-content-id="33980499"><li data-inline-task-id="3"><span class="placeholder-inline-tasks"><strong><u>Web</u></strong></span></li></ul><ul><li><p>Create component <code>view-stock-level</code> under apps/visa-card. Ensure to skip test.</p></li><li><p>Add route to the component in visa-card-routing.module. Path must be <code>view-stock-level</code>.</p></li><li><p>Add navigation to the path in navigation.dictionary.ts below <code>dispatch-blank-card</code></p></li><li><p>Add stock-level.dto under shared/data-transfer-objects. Properties should correspond to the StockLevelDto in services</p></li><li><p>Add stock-level.service.ts to retrieve low stock</p></li><li><p>Implement the view-stock-level to show Branch Name, Branch Code, Card Stock, # of Cards Issued, Date Last Generated searched using Card Profile</p></li></ul></td><td data-highlight-colour="#ffffff" class="confluenceTd"><p><span class="status-macro aui-lozenge aui-lozenge-success">COMPLETED</span>  </p></td></tr></tbody></table></div><p /><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/33980499/33914966.png">image-20210208-170353.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/33980499/33947952.png">image-20210208-170359.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/33980499/39485487.png">image-20210212-214041.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/33980499/51183628.png">StockLevelImplementation.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/33980499/69632017.png">UpdateStockLevel.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Mar 26, 2021 19:39</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
